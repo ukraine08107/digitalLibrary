@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container" style="margin-top: 50px;">
+   <form th:action="@{/addBook}">
+        Author: <input type="text" name = "author"/>
+        Title: <input type="text" name = "title"/>
+        ISBN:  <input type="number" name = "isbn"/>
+        Description: <input type="text" name = "description"/>
+        <input type="submit" value="Save book"/>
+    </form>
+    <table class="table">
+<thead>
+<tr>
+    <th scope="col">#</th>
+    <th scope="col">Title</th>
+    <th scope="col">Author</th>
+    <th scope="col">ISBN</th>
+    <th scope="col">Description</th>
+    <th scope="col"></th>
+</tr>
+</thead>
+        <tbody>
+    <tr th:each ="book : ${allBooks}">
+        <th scope="row" th:text="${book.id}"></th>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.ISBN}"></td>
+        <td th:text="${book.description}"
+             style="margin-bottom: 100px;"></td>
+        <td>
+        <form th:action="@{/retrieveInfo/{id}(id=${book.id})}">
+            <button type="submit">
+                <i class="fa fas fa-edit"></i>
+            </button>
+        </form>
+
+
+        </td>
+        </tbody>
+    </tr>
+    </table>
+</div>
+</body>
+</html>

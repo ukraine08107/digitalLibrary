@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container" style="margin-top: 150px;">
+    <form th:action="@{/updateBook/{id}(id=${book.id})}">
+        Author: <input type="text" name = "author" th:value="${book.author}"/>
+        Title: <input type="text" name = "title" th:value="${book.title}"/>
+        ISBN:  <input type="number" name = "isbn"th:value="${book.ISBN}"/>
+        Description: <input type="text" name = "description" th:value="${book.description}"/>
+        <input type="submit" value="Update book"/>
+    </form>
+</div>
+</body>
+</html>
